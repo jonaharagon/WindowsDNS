@@ -73,4 +73,12 @@ public class PacketDNS {
 		}
 		return null;
 	}
+
+	/**
+	 * Get the Domain after analysing the packet
+	 * @return the domain
+	 */
+	public String getDomain() {
+		return this.domain;
+	}
 }

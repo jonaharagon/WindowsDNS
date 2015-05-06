@@ -20,6 +20,7 @@ public class DNS implements Runnable {
 	public static boolean debugMode = true;
 	private static int dnsPort = 53;
 
+	// FOR TEST PURPOSES
 	public static void main(String[] args) {
 		DNS.start();
 	}
