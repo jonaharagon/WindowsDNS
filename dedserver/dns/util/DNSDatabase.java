@@ -38,7 +38,6 @@ public class DNSDatabase {
 	 * @throws UnknownHostException
 	 */
 	public static String get(String addr) throws UnknownHostException {
-		addr += ".";
 		if (prop.containsKey(addr)) {
 			return (String) prop.getProperty(addr);
 		} else {
