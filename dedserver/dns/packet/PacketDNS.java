@@ -38,7 +38,7 @@ public class PacketDNS {
 			b = 12;
 			a = data[b];
 			while (a != 0) {
-				domain = Util.joinArray(data, b + 1, a + b + 1) + ".";
+				domain += Util.joinArray(data, b + 1, a + b) + ".";
 				b += a + 1;
 				a = data[b];
 			}

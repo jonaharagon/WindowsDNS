@@ -8,12 +8,16 @@ import java.util.Properties;
 
 /**
  * This is basically the class that parses the dns.config file
+ * 
  * @author DevilMental
  *
  */
 public class DNSDatabase {
 	private static Properties prop;
-
+	
+	/**
+	 * Init the Database
+	 */
 	public static void init() {
 		prop = new Properties();
 		InputStream input;
@@ -27,7 +31,22 @@ public class DNSDatabase {
 		}
 	}
 
+	/**
+	 * Get the IP Address with the domain name
+	 * @param addr
+	 * @return the IP Address
+	 * @throws UnknownHostException
+	 */
 	public static String get(String addr) throws UnknownHostException {
-		return prop.containsKey(addr) ? (String) prop.getProperty(addr) : InetAddress.getByName(addr).toString();
+		addr += ".";
+		if (prop.containsKey(addr)) {
+			return (String) prop.getProperty(addr);
+		} else {
+			if (!addr.contains("arpa")) {
+				return InetAddress.getAllByName(addr)[0].getHostAddress();
+			} else {
+				return "0.0.0.0";
+			}
+		}
 	}
 }
