@@ -28,6 +28,8 @@ public class RequestHandler {
 		PacketDNS pdns = new PacketDNS(data);
 		pdns.analyse();
 		String domain = pdns.getDomain();
+		if (DNS.debugMode)
+			System.out.println("Domain : " + domain);
 		int[] toSend = pdns
 				.getAnswer(DNSDatabase.get(domain), receivePacket.getLength());
 		return Util.fromUnsignedByteArrayToSigned(toSend);
